@@ -1,1 +1,405 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ryan Firmansyah — Portofolio</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Portofolio Ryan Firmansyah — Lulusan SMK. Frontend, Desain UI, dan proyek sekolah. Kontak untuk melamar kerja.">
+
+  <style>
+    :root{
+      --bg-1: #0f1724;
+      --bg-2: #071027;
+      --accent-a: rgba(141, 92, 246, 0.95); /* purple */
+      --accent-b: rgba(88, 216, 255, 0.95); /* cyan */
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.94);
+      --muted: rgba(255,255,255,0.6);
+      --card-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --radius: 16px;
+    }
+
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:40px 24px;
+    }
+
+    /* Decorative liquid shapes */
+    .bg-shapes{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .shape{
+      position:absolute;
+      filter: blur(40px);
+      opacity:0.9;
+      transform: translate3d(0,0,0);
+      mix-blend-mode: screen;
+    }
+    .shape.one{ width:520px;height:520px;right:-120px;top:-80px;background:radial-gradient(circle at 20% 20%, var(--accent-a), transparent 40%);}
+    .shape.two{ width:420px;height:420px;left:-140px;bottom:-120px;background:radial-gradient(circle at 80% 80%, var(--accent-b), transparent 40%);}
+
+    /* Container */
+    .container{
+      position:relative;
+      max-width:1100px;
+      margin:0 auto;
+      z-index:2;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .logo{
+      width:56px;height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), var(--card-shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .logo svg{filter: drop-shadow(0 6px 18px rgba(100,100,150,0.12));}
+
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:16px;
+      font-weight:600;
+      transition:color .18s, transform .18s;
+    }
+    nav a:hover{ color:var(--text); transform:translateY(-2px); }
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:28px;
+      align-items:start;
+    }
+
+    /* Glass card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(10px) saturate(120%);
+    }
+
+    /* Hero */
+    .hero{
+      padding:28px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      border-radius:12px;
+      position:relative;
+      overflow:visible;
+    }
+    .avatar{
+      width:120px;height:120px;border-radius:22px;flex:0 0 120px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .intro h1{
+      font-family:"Poppins", "Inter", sans-serif;
+      font-size:22px;margin-bottom:6px;
+      letter-spacing:-0.2px;
+    }
+    .tagline{color:var(--muted);margin-bottom:12px}
+    .cta{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;
+      font-weight:600;color:var(--text);text-decoration:none;border:1px solid rgba(255,255,255,0.06);
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      transition:transform .18s, box-shadow .18s;
+    }
+    .btn.primary{
+      background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+      color: #042033;
+      box-shadow: 0 8px 30px rgba(80,60,200,0.18);
+      border:none;
+    }
+    .btn:hover{ transform:translateY(-4px) }
+
+    /* Left column content */
+    .section{ margin-bottom:18px; }
+    .section h3{ font-size:16px;margin-bottom:12px;font-weight:700;color:var(--text) }
+    .about p{ color:var(--muted) }
+
+    /* Skills */
+    .skills{ display:flex;flex-wrap:wrap;gap:12px }
+    .skill{
+      min-width:160px;flex:1 1 210px;
+      background:var(--glass-2);
+      padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .skill .meta{display:flex;justify-content:space-between;margin-bottom:8px;color:var(--muted);font-weight:600}
+    .bar{height:8px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));border-radius:inherit}
+
+    /* Projects */
+    .projects-grid{ display:grid;grid-template-columns:repeat(2,1fr);gap:12px }
+    .project{
+      display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .project .thumb{width:72px;height:56px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,var(--accent-b),var(--accent-a));display:flex;align-items:center;justify-content:center;color:#042033;font-weight:700}
+    .project h4{font-size:14px;margin-bottom:6px}
+    .project p{font-size:13px;color:var(--muted)}
+
+    /* Right column */
+    .contact-card{ display:flex;flex-direction:column;gap:14px; padding:18px; }
+    .info-row{ display:flex;gap:12px;align-items:center }
+    .info-row svg{opacity:0.9}
+    .small{ font-size:13px;color:var(--muted) }
+
+    /* Footer */
+    footer{ margin-top:28px;text-align:center;color:var(--muted);font-size:13px }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      main{ grid-template-columns:1fr; }
+      .projects-grid{ grid-template-columns:1fr; }
+      .avatar{width:96px;height:96px;border-radius:14px}
+    }
+
+    @media (max-width:420px){
+      body{padding:20px 14px}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+    }
+
+    /* subtle interactions */
+    .project:hover{ transform:translateY(-6px); transition:transform .18s, box-shadow .18s; box-shadow: var(--card-shadow) }
+    .skill:hover{ transform:translateY(-4px); transition:transform .18s }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape one"></div>
+    <div class="shape two"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- small monogram -->
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="url(#g)"/>
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#5A6CFF"/>
+                <stop offset="1" stop-color="#58D8FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:700">Ryan Firmansyah</div>
+          <div style="font-size:13px;color:var(--muted)">Lulusan SMK • Siap Kerja</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navigasi utama">
+        <a href="#about">Tentang</a>
+        <a href="#projects">Proyek</a>
+        <a href="#contact">Kontak</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <section style="z-index:3">
+        <div class="card hero" role="region" aria-labelledby="hero-title">
+          <div class="avatar" aria-hidden="false">
+            <!-- Replace src with your photo -->
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a2efbbd8ecb8c73d7e7d1f3c7bde32a" alt="Foto Ryan Firmansyah — ganti dengan foto anda">
+          </div>
+          <div class="intro">
+            <h1 id="hero-title">Ryan Firmansyah</h1>
+            <div class="tagline">Lulusan SMK • Frontend & Desain UI • Mencari pekerjaan pertama</div>
+
+            <div style="display:flex;gap:10px;align-items:center" class="cta">
+              <a class="btn primary" href="cv/Ryan_Firmansyah_CV.pdf" download>Download CV</a>
+              <a class="btn" href="#contact">Hubungi Saya</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section card about" id="about" style="margin-top:14px">
+          <h3>Tentang Saya</h3>
+          <p>Halo, saya Ryan Firmansyah, lulusan SMK jurusan Teknik Komputer dan Jaringan. Saya tertarik pada pengembangan antarmuka, desain UI sederhana, dan pembuatan situs responsif. Saya cepat belajar, disiplin, dan siap untuk kontribusi di perusahaan atau startup.</p>
+
+          <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
+            <div class="small" style="background:var(--glass);padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">Lokasi: Kota Anda</div>
+            <div class="small" style="background:var(--glass);padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">Status: Siap Kerja</div>
+          </div>
+        </div>
+
+        <div class="section card">
+          <h3>Keahlian</h3>
+          <div class="skills" aria-hidden="false">
+            <div class="skill">
+              <div class="meta"><span>HTML & CSS</span><span>90%</span></div>
+              <div class="bar" aria-hidden="true"><i style="width:90%"></i></div>
+            </div>
+
+            <div class="skill">
+              <div class="meta"><span>JavaScript (Dasar)</span><span>70%</span></div>
+              <div class="bar" aria-hidden="true"><i style="width:70%"></i></div>
+            </div>
+
+            <div class="skill">
+              <div class="meta"><span>UI / Desain</span><span>75%</span></div>
+              <div class="bar" aria-hidden="true"><i style="width:75%"></i></div>
+            </div>
+
+            <div class="skill">
+              <div class="meta"><span>Jaringan (TKJ)</span><span>80%</span></div>
+              <div class="bar" aria-hidden="true"><i style="width:80%"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section card" id="projects">
+          <h3>Proyek Terpilih</h3>
+          <div class="projects-grid">
+            <article class="project" aria-labelledby="p1">
+              <div class="thumb">A1</div>
+              <div>
+                <h4 id="p1">Website Sekolah (Tugas)</h4>
+                <p class="small">Membuat halaman profil sekolah dan galeri menggunakan HTML & CSS. Responsif untuk mobile.</p>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p2">
+              <div class="thumb">A2</div>
+              <div>
+                <h4 id="p2">Sistem Absensi Sederhana</h4>
+                <p class="small">Prototype front-end untuk absensi berbasis web. Menggunakan form dan validasi dasar.</p>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p3">
+              <div class="thumb">A3</div>
+              <div>
+                <h4 id="p3">Landing Page Portofolio</h4>
+                <p class="small">Desain landing page modern dengan efek glassmorphism (tampilan saat ini).</p>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p4">
+              <div class="thumb">A4</div>
+              <div>
+                <h4 id="p4">Praktikum Jaringan</h4>
+                <p class="small">Dokumentasi konfigurasi dasar router dan switch untuk tugas lab TKJ.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right column -->
+      <aside>
+        <div class="card contact-card" id="contact" role="complementary" aria-labelledby="contact-title">
+          <h3 id="contact-title">Kontak</h3>
+
+          <div class="info-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21 8V7l-3 2-2-1-3 2-5-3-5 3V19a2 2 0 0 0 2 2h14" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">Email</div>
+              <div class="small"><a href="mailto:ryan@example.com" style="color:var(--muted);text-decoration:none">ryan@example.com</a></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22 16.92V21a1 1 0 0 1-1 1c-10.5 0-19-8.5-19-19a1 1 0 0 1 1-1h4.09a1 1 0 0 1 1 .75c.5 2.07 1.74 4.01 3.58 5.45a10.46 10.46 0 0 0 5.45 2.58.98.98 0 0 1 .75 1v4.09a1 1 0 0 0 1 1h0z" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">Telepon</div>
+              <div class="small"><a href="tel:+628123456789" style="color:var(--muted);text-decoration:none">+62 812-3456-789</a></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16 8a6 6 0 1 1-8 0 6 6 0 0 1 8 0z" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 22a15 15 0 0 1 20 0" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">LinkedIn</div>
+              <div class="small"><a href="https://www.linkedin.com/in/ryan" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">linkedin.com/in/ryan</a></div>
+            </div>
+          </div>
+
+          <div style="margin-top:6px">
+            <a class="btn" href="mailto:ryan@example.com">Kirim Email</a>
+            <a class="btn" href="https://wa.me/628123456789" target="_blank" rel="noopener" style="margin-left:8px">WhatsApp</a>
+          </div>
+
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+            Catatan: Ganti alamat email, nomor telepon, dan tautan LinkedIn dengan data Anda. Untuk mengunggah CV, tempatkan file di folder "cv" atau update tautan.
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Riwayat Pendidikan</h3>
+          <div class="small" style="margin-top:8px">
+            SMK Negeri — Teknik Komputer dan Jaringan<br>
+            Tahun Lulus: 2025
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Ketersediaan</h3>
+          <div class="small" style="margin-top:8px">Siap mulai kerja: segera / negosiasi</div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Dibuat oleh Ryan Firmansyah • Template sederhana glassmorphism — Sesuaikan isi untuk lamaran kerja Anda.
+    </footer>
+  </div>
+
+</body>
+</html>
